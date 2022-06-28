@@ -17,6 +17,7 @@ const wethContracts: Record<number, string> = {
   [ChainId.Ropsten]: '0xc778417e063141139fce010982780140aa0cd5ab',
   [ChainId.Rinkeby]: '0xc778417e063141139fce010982780140aa0cd5ab',
   [ChainId.Kovan]: '0xd0a1e359811322d97991e03f863a0c30c2cf029c',
+  [ChainId.Polygon]: '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270',
 };
 
 const AUCTION_HOUSE_PROXY_NONCE_OFFSET = 6;

@@ -15,8 +15,10 @@
     "deploy": "graph deploy --debug --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/",
     "prepare:rinkeby": "mustache config/rinkeby.json subgraph.yaml.mustache > subgraph.yaml",
     "prepare:mainnet": "mustache config/mainnet.json subgraph.yaml.mustache > subgraph.yaml",
+    "prepare:matic": "mustache config/matic.json subgraph.yaml.mustache > subgraph.yaml",
     "deploy:rinkeby": "yarn clean && yarn prepare:rinkeby && yarn codegen && yarn deploy nounsdao/nouns-subgraph-rinkeby",
     "deploy:mainnet": "yarn clean && yarn prepare:mainnet && yarn codegen && yarn deploy nounsdao/nouns-subgraph",
+    "deploy:matic": "yarn clean && yarn prepare:matic && yarn codegen && yarn deploy dkhd/nouns",
     "mustache": "mustache"
   },
   "devDependencies": {

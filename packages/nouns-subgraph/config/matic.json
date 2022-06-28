@@ -1,0 +1,15 @@
+{
+  "network": "matic",
+  "nounsToken": {
+    "address": "0xEF436232fBDa0cEAbD9C62ab863E8cd7D9F144e4",
+    "startBlock": 30078299
+  },
+  "nounsAuctionHouse": {
+    "address": "0xC586FA22aDD76267A3Fe5ED8E0e21eAf51Dc2615",
+    "startBlock": 30078303
+  },
+  "nounsDAO": {
+    "address": "0xC529e43D193B9A9D9d93F5CF610d173A00dD1a37",
+    "startBlock": 30078332
+  }
+}

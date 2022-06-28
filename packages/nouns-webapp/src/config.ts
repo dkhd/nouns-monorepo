@@ -17,7 +17,7 @@ interface AppConfig {
   enableHistory: boolean;
 }
 
-type SupportedChains = ChainId.Rinkeby | ChainId.Mainnet | ChainId.Hardhat;
+type SupportedChains = ChainId.Rinkeby | ChainId.Mainnet | ChainId.Hardhat | ChainId.Polygon;
 
 interface CacheBucket {
   name: string;
@@ -52,14 +52,20 @@ export const createNetworkHttpUrl = (network: string): string => {
 
 export const createNetworkWsUrl = (network: string): string => {
   const custom = process.env[`REACT_APP_${network.toUpperCase()}_WSRPC`];
-  return custom || `wss://${network}.infura.io/ws/v3/${INFURA_PROJECT_ID}`;
-};
+  return custom || 'wss://polygon-mainnet.g.alchemy.com/v2/' + process.env.REACT_APP_ALCHEMY_SECRET; //`wss://${network}.infura.io/ws/v3/${INFURA_PROJECT_ID}`;
+};;
 
 const app: Record<SupportedChains, AppConfig> = {
   [ChainId.Rinkeby]: {
     jsonRpcUri: createNetworkHttpUrl('rinkeby'),
     wsRpcUri: createNetworkWsUrl('rinkeby'),
     subgraphApiUri: 'https://api.thegraph.com/subgraphs/name/nounsdao/nouns-subgraph-rinkeby-v4',
+    enableHistory: process.env.REACT_APP_ENABLE_HISTORY === 'true',
+  },
+  [ChainId.Polygon]: {
+    jsonRpcUri: createNetworkHttpUrl('polygon-mainnet'),
+    wsRpcUri: createNetworkWsUrl('polygon-mainnet'),
+    subgraphApiUri: 'https://api.thegraph.com/subgraphs/name/dkhd/nouns',
     enableHistory: process.env.REACT_APP_ENABLE_HISTORY === 'true',
   },
   [ChainId.Mainnet]: {
@@ -82,6 +88,9 @@ const externalAddresses: Record<SupportedChains, ExternalContractAddresses> = {
   },
   [ChainId.Mainnet]: {
     lidoToken: '0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84',
+  },
+  [ChainId.Polygon]: {
+    lidoToken: '0xC3C7d422809852031b44ab29EEC9F1EfF2A58756',
   },
   [ChainId.Hardhat]: {
     lidoToken: undefined,

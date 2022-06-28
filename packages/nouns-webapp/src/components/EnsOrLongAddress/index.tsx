@@ -1,5 +1,5 @@
-import { useReverseENSLookUp } from '../../utils/ensLookup';
-import { containsBlockedText } from '../../utils/moderation/containsBlockedText';
+// import { useReverseENSLookUp } from '../../utils/ensLookup';
+// import { containsBlockedText } from '../../utils/moderation/containsBlockedText';
 
 interface EnsOrLongAddressProps {
   address: string;
@@ -10,9 +10,10 @@ interface EnsOrLongAddressProps {
  */
 const EnsOrLongAddress: React.FC<EnsOrLongAddressProps> = props => {
   const { address } = props;
-  const ens = useReverseENSLookUp(address);
-  const ensMatchesBlocklistRegex = containsBlockedText(ens || '', 'en');
-  return <>{ens && !ensMatchesBlocklistRegex ? ens : address}</>;
+  // const ens = useReverseENSLookUp(address);
+  // const ensMatchesBlocklistRegex = containsBlockedText(ens || '', 'en');
+  // return <>{ens && !ensMatchesBlocklistRegex ? ens : address}</>;
+  return <>{address}</>;
 };
 
 export default EnsOrLongAddress;

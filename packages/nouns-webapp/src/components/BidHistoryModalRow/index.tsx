@@ -11,10 +11,10 @@ import auctionActivityClasses from '../AuctionActivity/BidHistory.module.css';
 import _trophy from '../../assets/icons/trophy.svg';
 import Davatar from '@davatar/react';
 import { useEthers } from '@usedapp/core';
-import { useReverseENSLookUp } from '../../utils/ensLookup';
-import { containsBlockedText } from '../../utils/moderation/containsBlockedText';
+// import { useReverseENSLookUp } from '../../utils/ensLookup';
+// import { containsBlockedText } from '../../utils/moderation/containsBlockedText';
 import { i18n } from '@lingui/core';
-import { shortENS, useShortAddress } from '../../utils/addressAndENSDisplayUtils';
+import { useShortAddress } from '../../utils/addressAndENSDisplayUtils';
 interface BidHistoryModalRowProps {
   bid: Bid;
   index: number;
@@ -27,8 +27,8 @@ const BidHistoryModalRow: React.FC<BidHistoryModalRowProps> = props => {
 
   const bidAmount = <TruncatedAmount amount={new BigNumber(EthersBN.from(bid.value).toString())} />;
 
-  const ens = useReverseENSLookUp(bid.sender);
-  const ensMatchesBlocklistRegex = containsBlockedText(ens || '', 'en');
+  // const ens = useReverseENSLookUp(bid.sender);
+  // const ensMatchesBlocklistRegex = containsBlockedText(ens || '', 'en');
   const shortAddress = useShortAddress(bid.sender);
 
   return (
@@ -40,7 +40,7 @@ const BidHistoryModalRow: React.FC<BidHistoryModalRowProps> = props => {
               <Davatar size={40} address={bid.sender} provider={provider} />
               <div className={classes.bidderInfoText}>
                 <span>
-                  {ens && !ensMatchesBlocklistRegex ? shortENS(ens) : shortAddress}
+                  {shortAddress}
                   {index === 0 && (
                     <img
                       src={_trophy}

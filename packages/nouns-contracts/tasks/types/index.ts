@@ -5,6 +5,7 @@ export enum ChainId {
   Ropsten = 3,
   Rinkeby = 4,
   Kovan = 42,
+  Polygon = 137,
 }
 
 // prettier-ignore

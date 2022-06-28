@@ -80,6 +80,7 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
 const supportedChainURLs = {
+  [ChainId.Polygon]: createNetworkHttpUrl('polygon-mainnet'),
   [ChainId.Mainnet]: createNetworkHttpUrl('mainnet'),
   [ChainId.Rinkeby]: createNetworkHttpUrl('rinkeby'),
   [ChainId.Hardhat]: 'http://localhost:8545',
@@ -103,7 +104,7 @@ const Updaters = () => {
   );
 };
 
-const BLOCKS_PER_DAY = 6_500;
+const BLOCKS_PER_DAY = 3_000;
 
 const ChainSubscriber: React.FC = () => {
   const dispatch = useAppDispatch();
