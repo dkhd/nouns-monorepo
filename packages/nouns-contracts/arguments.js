@@ -1,7 +1,7 @@
 module.exports = [
-  '0xba42df55ce8f2d99b96ff2af223a5851fb12e49d', // noundersDAO
-  '0x8b7221388b29aa003b32e8f5f4cfe359c0fa0be6', // minter
-  '0xbc62bb71bab02281fe5ecd545c202b4fb90fead0', // descriptor
-  '0xdb49f1be226841b06ed62475b0e9044c0b6f19d9', // seeder
-  '0xc529e43d193b9a9d9d93f5cf610d173a00dd1a37', // proxy
+  '0x8B7221388B29Aa003B32e8F5f4cFE359C0FA0Be6', // noundersDAO
+  '0xA86E827552F75002B3A1b6aE0191Ae52AD69fB75', // minter
+  '0xBC62Bb71BAB02281fe5EcD545C202b4fb90feAD0', // descriptor
+  '0xDB49f1bE226841B06ed62475b0e9044C0B6F19d9', // seeder
+  '0xf57b2c51ded3a29e6891aba85459d600256cf317', // proxy
 ];
