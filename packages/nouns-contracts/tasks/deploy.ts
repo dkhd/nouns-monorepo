@@ -48,7 +48,7 @@ task('deploy', 'Deploys NFTDescriptor, NounsDescriptor, NounsSeeder, and NounsTo
   .addOptionalParam(
     'auctionDuration',
     'The auction duration (seconds)',
-    60 * 60 * 24 /* 24 hours */,
+    60 * 3 /* 3 minutes */,
     types.int,
   )
   .addOptionalParam(
@@ -197,7 +197,7 @@ task('deploy', 'Deploys NFTDescriptor, NounsDescriptor, NounsSeeder, and NounsTo
     for (const [name, contract] of Object.entries(contracts)) {
       let gasPrice = await ethers.provider.getGasPrice();
       if (!args.autoDeploy) {
-        const gasInGwei = Math.round(Number(ethers.utils.formatUnits(gasPrice, 'gwei')));
+        const gasInGwei = Math.round(Number(ethers.utils.formatUnits(gasPrice, 'gwei'))) + 20;
 
         promptjs.start();
 
