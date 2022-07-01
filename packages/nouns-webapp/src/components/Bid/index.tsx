@@ -292,16 +292,16 @@ const Bid: React.FC<{
         ) : (
           <>
             <Col lg={12} className={classes.voteForNextNounBtnWrapper}>
-              <Button className={classes.bidBtnAuctionEnded} onClick={fomoNounsBtnOnClickHandler}>
-                <Trans>Vote for the next Noun</Trans> ⌐◧-◧
-              </Button>
-            </Col>
-            {/* Only show force settle button if wallet connected */}
             {isWalletConnected && (
               <Col lg={12}>
                 <SettleManuallyBtn settleAuctionHandler={settleAuctionHandler} auction={auction} />
               </Col>
             )}
+              {/* <Button className={classes.bidBtnAuctionEnded} onClick={fomoNounsBtnOnClickHandler}>
+                <Trans>Vote for the next Noun</Trans> ⌐◧-◧
+              </Button> */}
+            </Col>
+            {/* Only show force settle button if wallet connected */}
           </>
         )}
       </InputGroup>

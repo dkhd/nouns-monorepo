@@ -35,7 +35,7 @@ const NounInfoCard: React.FC<NounInfoCardProps> = props => {
         <NounInfoRowBirthday nounId={nounId} />
       </Col>
       <Col lg={12} className={classes.nounInfoRow}>
-        <NounInfoRowHolder nounId={nounId} />
+        {/* <NounInfoRowHolder nounId={nounId} /> */}
       </Col>
       <Col lg={12} className={classes.nounInfoRow}>
         <NounInfoRowButton
