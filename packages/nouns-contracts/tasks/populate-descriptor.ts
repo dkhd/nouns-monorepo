@@ -6,13 +6,13 @@ task('populate-descriptor', 'Populates the descriptor with color palettes and No
   .addOptionalParam(
     'nftDescriptor',
     'The `NFTDescriptor` contract address',
-    '0x06dF7Fd7459f586ee9c4F3d754999768AE1eB564',
+    '0xA1a7F17678c134E66F82EfC27B8F7152B67778e6',
     types.string,
   )
   .addOptionalParam(
     'nounsDescriptor',
     'The `NounsDescriptor` contract address',
-    '0x84e0C0805F65A0c9dD850F431549f1Ad81328f15',
+    '0xF824883111784F179684d904EDE09FC6b5322d25',
     types.string,
   )
   .setAction(async ({ nftDescriptor, nounsDescriptor }, { ethers }) => {
@@ -29,19 +29,19 @@ task('populate-descriptor', 'Populates the descriptor with color palettes and No
     console.log('Descriptor address = ', descriptorContract.address);
 
     // Chunk head and accessory population due to high gas usage
-    console.log(await descriptorContract.addManyBackgrounds(bgcolors));
-    console.log(await descriptorContract.addManyColorsToPalette(0, palette));
-    console.log(await descriptorContract.addManyBodies(bodies.map(({ data }) => data)));
+    // console.log(await descriptorContract.addManyBackgrounds(bgcolors));
+    // console.log(await descriptorContract.addManyColorsToPalette(0, palette));
+    // console.log(await descriptorContract.addManyBodies(bodies.map(({ data }) => data)));
 
-    const accessoryChunk = chunkArray(accessories, 10);
-    for (const chunk of accessoryChunk) {
-      console.log(await descriptorContract.addManyAccessories(chunk.map(({ data }) => data)));
-    }
+    // const accessoryChunk = chunkArray(accessories, 10);
+    // for (const chunk of accessoryChunk) {
+    //   console.log(await descriptorContract.addManyAccessories(chunk.map(({ data }) => data)));
+    // }
 
-    const headChunk = chunkArray(heads, 10);
-    for (const chunk of headChunk) {
-      console.log(await descriptorContract.addManyHeads(chunk.map(({ data }) => data)));
-    }
+    // const headChunk = chunkArray(heads, 10);
+    // for (const chunk of headChunk) {
+    //   console.log(await descriptorContract.addManyHeads(chunk.map(({ data }) => data)));
+    // }
 
     console.log(await descriptorContract.addManyGlasses(glasses.map(({ data }) => data)));
 
