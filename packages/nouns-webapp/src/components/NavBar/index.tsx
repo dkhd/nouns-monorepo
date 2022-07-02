@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import { Nav, Navbar, Container } from 'react-bootstrap';
 import testnetNoun from '../../assets/testnet-noun.png';
 import config, { CHAIN_ID } from '../../config';
-import { utils } from 'ethers';
 import { buildEtherscanHoldingsLink } from '../../utils/etherscan';
 import { ExternalURL, externalURL } from '../../utils/externalURL';
 import useLidoBalance from '../../hooks/useLidoBalance';
@@ -20,8 +19,9 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import NavBarTreasury from '../NavBarTreasury';
 import NavWallet from '../NavWallet';
 import { Trans } from '@lingui/macro';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavLocaleSwitcher from '../NavLocaleSwitcher';
+import { retrieveMatic } from './RetrieveMatic';
 
 const NavBar = () => {
   const activeAccount = useAppSelector(state => state.account.activeAccount);
@@ -31,8 +31,10 @@ const NavBar = () => {
   const ethBalance = useEtherBalance(config.addresses.nounsDaoExecutor);
   const lidoBalanceAsETH = useLidoBalance();
   const treasuryBalance = ethBalance && lidoBalanceAsETH && ethBalance.add(lidoBalanceAsETH);
-  const daoEtherscanLink = buildEtherscanHoldingsLink(config.addresses.nounsDaoExecutor);
+  const daoEtherscanLink = buildEtherscanHoldingsLink(String(process.env.REACT_APP_NOUNDERSDAO_ADDRESS));
   const [isNavExpanded, setIsNavExpanded] = useState(false);
+
+  const [maticBalance, setMaticBalance] = useState("0")
 
   const useStateBg =
     history.location.pathname === '/' ||
@@ -46,6 +48,13 @@ const NavBar = () => {
     : NavBarButtonStyle.WARM_INFO;
 
   const closeNav = () => setIsNavExpanded(false);
+
+  useEffect(() => {
+    retrieveMatic()
+    .then((res) => {
+      setMaticBalance(String(res))
+    })
+  }, [])
 
   return (
     <>
@@ -75,7 +84,8 @@ const NavBar = () => {
                   rel="noreferrer"
                 >
                   <NavBarTreasury
-                    treasuryBalance={Number(utils.formatEther(treasuryBalance)).toFixed(0)}
+                    // treasuryBalance={Number(utils.formatEther(treasuryBalance)).toFixed(0)}
+                    treasuryBalance={maticBalance}
                     treasuryStyle={nonWalletButtonStyle}
                   />
                 </Nav.Link>

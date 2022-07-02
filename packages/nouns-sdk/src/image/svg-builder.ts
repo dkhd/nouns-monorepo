@@ -37,6 +37,7 @@ export const buildSVG = (
   paletteColors: string[],
   bgColor: string,
 ): string => {
+  
   const svgWithoutEndTag = parts.reduce((result, part) => {
     const svgRects: string[] = [];
     const { bounds, rects } = decodeImage(part.data);

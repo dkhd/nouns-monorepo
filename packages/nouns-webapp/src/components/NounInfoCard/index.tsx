@@ -7,7 +7,7 @@ import _AddressIcon from '../../assets/icons/Address.svg';
 import _BidsIcon from '../../assets/icons/Bids.svg';
 
 import NounInfoRowBirthday from '../NounInfoRowBirthday';
-import NounInfoRowHolder from '../NounInfoRowHolder';
+// import NounInfoRowHolder from '../NounInfoRowHolder';
 import NounInfoRowButton from '../NounInfoRowButton';
 import { useAppSelector } from '../../hooks';
 
